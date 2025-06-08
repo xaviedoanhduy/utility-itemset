@@ -1,0 +1,36 @@
+<odoo>
+    <record id="view_sale_huim_wizard_form" model="ir.ui.view">
+        <field name="name">huim.sale.wizard.form</field>
+        <field name="model">huim.sale.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="min_utility"/>
+                </group>
+                <footer>
+                    <button string="Mine Itemsets" type="object" name="action_mine" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sale_huim_wizard" model="ir.actions.act_window">
+        <field name="name">Mine Itemsets from Sale</field>
+        <field name="res_model">huim.sale.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem 
+        id="menu_utility_sale_root" 
+        name="Utility Mining"
+        parent="utility_itemset_base.menu_utility_root" 
+    />
+    <menuitem 
+        id="menu_sale_huim" 
+        name="From Sale Orders" 
+        parent="menu_utility_sale_root" 
+        action="action_sale_huim_wizard"
+    />
+</odoo>
