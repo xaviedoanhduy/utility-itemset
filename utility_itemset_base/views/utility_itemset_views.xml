@@ -1,0 +1,45 @@
+<!-- Copyright 2025 Do Anh Duy (doanhduyxavie@gmail.com)
+License AGPL-3.0 or later (https://www.gnu.org/licenses/lgpl). -->
+
+<odoo>
+
+    <record id="view_utility_itemset_list" model="ir.ui.view">
+        <field name="name">utility.itemset.list</field>
+        <field name="model">utility.itemset</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="item_ids" widget="many2many_tags"/>
+                <field name="utility"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_utility_itemset_form" model="ir.ui.view">
+        <field name="name">utility.itemset.form</field>
+        <field name="model">utility.itemset</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="item_ids" widget="many2many_tags"/>
+                    <field name="utility"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_utility_itemset" model="ir.actions.act_window">
+        <field name="name">High Utility Itemsets</field>
+        <field name="res_model">utility.itemset</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_utility_root" name="Utility Mining"/>
+
+    <menuitem
+        id="menu_utility_itemset"
+        name="Itemset Results"
+        parent="menu_utility_root"
+        action="action_utility_itemset"
+    />
+
+</odoo>
